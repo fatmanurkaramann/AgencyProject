@@ -10,7 +10,7 @@ const PhotoSchema = new Schema ({
         unique:true
     },
     image: {
-        type: String
+        type: String,
     }
 })
 
