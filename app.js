@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose')
 const fileUpload = require('express-fileupload');
-
+const methodOverride = require('method-override')
 const ejs = require('ejs')
 const photoRoute = require('./routes/photoRoute')
 const pageRoute = require('./routes/pageRoute')
@@ -21,7 +21,9 @@ mongoose.connect('mongodb://localhost/agency-db', {
     });
 
 app.set("view engine", "ejs");
-
+app.use(methodOverride('_method', {
+    methods: ['POST', 'GET']
+}))
 //middle wares
 app.use(express.static('public'))
 app.use(express.json());
