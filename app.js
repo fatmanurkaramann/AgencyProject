@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const fileUpload = require('express-fileupload');
 const methodOverride = require('method-override')
 const ejs = require('ejs')
+const bodyParser = require('body-parser');
 const photoRoute = require('./routes/photoRoute')
 const pageRoute = require('./routes/pageRoute')
 
@@ -28,6 +29,8 @@ app.use(methodOverride('_method', {
 app.use(express.static('public'))
 app.use(express.json());
 app.use(fileUpload())
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 
 //app.use('/photos', photoRoute)
